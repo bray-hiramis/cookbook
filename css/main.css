@@ -1,0 +1,150 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 10px;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  scroll-padding-top: 10rem;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #fffaf3;
+  color: #333;
+  letter-spacing: 2.2px;
+}
+
+h1 {
+  font-size: clamp(4rem, 2.73vw + 3.13rem, 6.4rem);
+}
+
+h2 {
+  font-size: clamp(3rem, 1.36vw + 2.56rem, 4.2rem);
+}
+
+h3 {
+  font-size: clamp(2rem, 0.45vw + 1.86rem, 2.4rem);
+}
+
+h4 {
+  font-size: clamp(1.6rem, 0.23vw + 1.53rem, 1.8rem);
+}
+
+p, li, a, input, textarea, label {
+  font-size: 1.6rem;
+}
+
+a {
+  display: block;
+  text-decoration: none;
+  color: #333;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  display: block;
+  object-fit: cover;
+  max-width: 100%;
+}
+
+.padding-topbottom {
+  padding: 15px 0;
+}
+
+.nav-container {
+  position: fixed;
+  top: 0;
+  min-width: 100%;
+  height: auto;
+  border-bottom: 1px solid #f62440;
+}
+
+.container {
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.highlight {
+  color: #f62440;
+}
+
+.btn {
+  padding: 10px;
+  min-width: 200px;
+  border: 1px solid #ffe5bf;
+  border-radius: 12px;
+  font-size: 16px;
+  background-color: #ffe5bf;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+.btn:hover {
+  border: 1px solid #f62440;
+}
+
+nav .nav-links {
+  max-width: 1500px;
+  margin: 0 auto;
+}
+nav .nav-links .nav-btn {
+  display: flex;
+  justify-content: flex-end;
+}
+nav .nav-links .nav-btn .nav-link {
+  margin-left: 15px;
+}
+nav .nav-links .nav-btn .nav-link a {
+  padding: 15px;
+  transition: 0.2s ease-in-out;
+}
+nav .nav-links .nav-btn .nav-link a:hover {
+  background-color: #ffe5bf;
+}
+nav .nav-links .nav-btn .nav-link:last-child {
+  text-decoration: underline;
+}
+
+main .search-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main .search-container .search-home h1 {
+  text-align: center;
+}
+main .search-container .search-home #form-container #searchbox-content {
+  display: grid;
+  grid-template-columns: 1fr 15fr;
+  align-items: center;
+  margin-bottom: 35px;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
+  min-width: 600px;
+}
+main .search-container .search-home #form-container #searchbox-content #search-box {
+  border: none;
+  background-color: transparent;
+}
+main .search-container .search-home #form-container #searchbox-content #search-box:focus {
+  outline: none;
+}
+main .search-container .search-home #form-container #search-btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*# sourceMappingURL=main.css.map */
