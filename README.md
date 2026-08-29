@@ -5,9 +5,9 @@ Cookbook is a recipe finder app and utilizes the <strong>themealdb.com API</stro
 ## Features
 
 - V1 features:
-      - Search food recipes.
-      - Save your favorite recipes.
-      - Filter your favorite recipes for faster search.
+   - Search food recipes.
+   - Save your favorite recipes.
+   - Filter your favorite recipes for faster search.
 
 ## Visual Demo
 
