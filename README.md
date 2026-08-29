@@ -16,8 +16,8 @@ Cookbook is a recipe finder app and utilizes the <strong>themealdb.com API</stro
 ## Getting Started
 
 ```bash
-git clone <sample-change-later>
-cd <sample-change-later>
+git clone https://github.com/bray-hiramis/cookbook.git
+cd cookbook
 ```
 
 ## Tech Stack
