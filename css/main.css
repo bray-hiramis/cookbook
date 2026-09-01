@@ -147,4 +147,18 @@ main .search-container .search-home #form-container #search-btn {
   align-items: center;
 }
 
+footer {
+  text-align: center;
+}
+footer p {
+  font-size: 14px;
+}
+footer .socials a {
+  display: inline-block;
+  font-size: 25px;
+}
+footer .socials .fa-linkedin {
+  color: #0a65c1;
+}
+
 /*# sourceMappingURL=main.css.map */

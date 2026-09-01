@@ -65,3 +65,20 @@ main {
       }
    }
 }
+
+footer {
+   text-align: center;
+   p {
+      font-size: 14px;
+   }
+
+   .socials {
+      a {
+         display: inline-block;
+         font-size: 25px;
+      }
+      .fa-linkedin {
+         color: #0a65c1;
+      }
+   }
+}
