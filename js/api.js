@@ -6,7 +6,7 @@ export async function searchMeal(meal) {
       const recipe = mealDBAPI + meal;
       let response = await fetch(recipe);
       let data = await response.json();
-      result = data;
+      result = data.meals;
       return result;
    } catch (error) {
       console.error("Error occured:", error);
