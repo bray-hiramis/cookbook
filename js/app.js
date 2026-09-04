@@ -12,9 +12,11 @@ function getSearchEntry() {
 formContainer.addEventListener("submit", function(e) {
    e.preventDefault();
    getSearchEntry();
+   searchBox.value = "";
 })
 
 searchIconBtn.addEventListener("click", function(e) {
    e.preventDefault();
    getSearchEntry();
+   searchBox.value = "";
 })

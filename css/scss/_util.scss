@@ -4,17 +4,10 @@
    padding: var.$space-s 0;
 }
 
-.nav-container {
-   position: fixed;
-   top: 0;
-   min-width: 100%;
-   height: auto;
-   border-bottom: 1px solid var.$main-color;
-}
-
 .container {
    max-width: 1500px;
    margin: 0 auto;
+   padding: 0 var.$space-s;
 }
 
 .highlight {
@@ -24,13 +17,15 @@
 .btn {
    padding: 10px;
    min-width: 200px;
-   border: 1px solid var.$accent-color;
+   border: 1px solid var.$main-color;
    border-radius: var.$corner-l;
    font-size: 16px;
-   background-color: var.$accent-color;
+   background-color: var.$main-color;
+   color: #fefefe;
    cursor: pointer;
    transition: .2s ease-in-out;
+   font-size: 18px;
    &:hover {
-      border: 1px solid var.$main-color;
+      transform: scale(1.03);
    }
 }

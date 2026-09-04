@@ -88,67 +88,59 @@ img {
 
 .grid-container {
   display: grid;
-  grid-template-areas: "nav" "main" "footer";
-  gap: 35px;
+  grid-template-areas: "header" "main";
 }
-.grid-container #nav {
-  grid-area: nav;
+.grid-container #header {
+  margin: 15px 0;
+  grid-area: header;
 }
-.grid-container #nav .nav-btn {
-  display: flex;
-  justify-content: flex-end;
+.grid-container #header .search-container {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  align-items: center;
   gap: 10px;
 }
-.grid-container #nav .nav-btn .nav-link a {
-  padding: 15px;
-  border-bottom: 2px solid transparent;
-}
-.grid-container #nav .nav-btn .nav-link a:hover {
-  color: #f62440;
-  border-bottom: 2px solid #f62440;
-}
-.grid-container #main {
-  grid-area: main;
-  height: 70vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.grid-container #main .search-home #title {
-  text-align: center;
-}
-.grid-container #main .search-home #searchbox-content {
+.grid-container #header .search-container .form-container {
   background-color: #fefefe;
   padding: 15px;
-  border-radius: 12px;
-  width: 550px;
-  min-width: 200px;
-  display: grid;
-  grid-template-columns: 1fr 15fr;
-  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 9999px;
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
 }
-.grid-container #main .search-home #searchbox-content #search-box {
+.grid-container #header .search-container .form-container #form {
+  display: grid;
+  grid-template-columns: 1fr 20fr;
+  gap: 10px;
+}
+.grid-container #header .search-container .form-container #form #search-icon-btn {
+  border-right: 1px solid #777;
+}
+.grid-container #header .search-container .form-container #form #search-box {
   border: none;
   outline: none;
 }
-.grid-container #main .search-home #search-btn {
-  margin-top: 15px;
-  display: flex;
-  justify-content: center;
-}
-.grid-container #footer {
-  grid-area: footer;
+.grid-container #header .search-container .favorite-nav-container {
   text-align: center;
 }
-.grid-container #footer p {
-  font-size: 12px;
+.grid-container #header .search-container .favorite-nav-container a {
+  color: #f62440;
+  border-bottom: 2px solid transparent;
+  font-weight: 600;
 }
-.grid-container #footer .socials a {
-  display: inline-block;
-  margin: 5px;
+.grid-container #main {
+  grid-area: main;
+  min-height: 100vh;
 }
-.grid-container #footer .socials a i {
-  font-size: 20px;
+.grid-container #main li {
+  list-style: decimal;
+  margin-left: 50px;
+}
+.grid-container #main img {
+  border-radius: 12px;
+}
+.grid-container #main #result {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 20px;
 }
 
-/*# sourceMappingURL=main.css.map */
+/*# sourceMappingURL=recipes.css.map */
