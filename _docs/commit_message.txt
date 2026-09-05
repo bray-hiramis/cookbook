@@ -1,0 +1,4 @@
+Here are the updates I did:
+
+1. Added a function to only display the first 5 results (only works if the mealdb array has more than 5 elements).
+2. Added a function to the load more button to add additional 5 more results.

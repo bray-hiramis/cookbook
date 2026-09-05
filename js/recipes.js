@@ -7,6 +7,7 @@ let startingIndex = 0;
 let endingIndex = 5;
 
 const result = document.getElementById("result");
+const loadMoreBtn = document.getElementById("load-more-btn");
 
 async function fetchRecipes() {
    if (query) {
@@ -47,8 +48,20 @@ function formatInstructions(instructions) {
    return steps.map(step => `<li>${step}</li>`).join("");
 }
 
+function displayMoreRecipes() {
+   startingIndex += 5;
+   endingIndex += 5;
+
+   displayRecipes(recipesArr.slice(startingIndex, endingIndex));
+   if (recipesArr.length <= endingIndex) {
+      loadMoreBtn.disabled = true;
+      loadMoreBtn.style.cursor = "not-allowed";
+      loadMoreBtn.textContent = "No more data to load";
+   }
+}
+
 function displayRecipes(recipes) {
-   result.innerHTML = "";
+   // result.innerHTML = "";
    
    recipes.forEach((recipe) => {
       const ingredientsHTML = getIngredients(recipe);
@@ -73,5 +86,9 @@ function displayRecipes(recipes) {
       `
    })
 }
+
+loadMoreBtn.addEventListener("click", displayMoreRecipes);
+
+// For testing purposes only to check the fetch output in console
 const testFetch = fetchRecipes()
 console.log(testFetch);
