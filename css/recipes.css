@@ -17,7 +17,7 @@ body {
   font-family: "Inter", sans-serif;
   background-color: #fffaf3;
   color: #333;
-  letter-spacing: 2.2px;
+  letter-spacing: 2px;
 }
 
 h1 {
@@ -130,17 +130,42 @@ img {
   grid-area: main;
   min-height: 100vh;
 }
-.grid-container #main li {
-  list-style: decimal;
-  margin-left: 50px;
-}
 .grid-container #main img {
   border-radius: 12px;
 }
-.grid-container #main #result {
+.grid-container #main #result .recipe-container {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 20px;
+  margin-bottom: 45px;
+  background-color: #fefefe;
+  padding: 15px;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+}
+.grid-container #main #result .recipe-container .meal-info-container {
+  position: relative;
+  top: 0;
+}
+.grid-container #main #result .recipe-container .meal-info-container #fav-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  font-size: 40px;
+}
+.grid-container #main #result .recipe-container .meal-info-container .ingredient-list li {
+  list-style: disc;
+  margin-left: 50px;
+}
+.grid-container #main #result .recipe-container .meal-info-container .instruction-steps li {
+  list-style: decimal-leading-zero;
+  padding: 10px;
+}
+.grid-container #main #result .recipe-container .meal-info-container .meal-source {
+  color: #0a75ad;
 }
 
 /*# sourceMappingURL=recipes.css.map */

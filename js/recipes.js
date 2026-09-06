@@ -68,20 +68,24 @@ function displayRecipes(recipes) {
       const instructionsHTML = formatInstructions(recipe.strInstructions);
 
       result.innerHTML += `
-         <div class="meal-image-container">
-            <img loading="lazy" src="${recipe.strMealThumb}" alt="${recipe.strMeal}" class="meal-image" />
-         </div>
-         <div class="meal-info-container">
-            <h2 class="meal-title">${recipe.strMeal}</h2>
-            <p class="meal-id" id="${recipe.idMeal}">${recipe.idMeal}</p>
-            <h3>Ingredients</h3>
-            <ol class="ingredient-list">
-               ${ingredientsHTML}
-            </ol>
-            <h3>Instructions</h3>
-            <ol class="instruction-steps">
-               ${instructionsHTML}
-            </ol>
+         <div class="recipe-container" id="${recipe.idMeal}">
+            <div class="meal-image-container">
+               <img loading="lazy" src="${recipe.strMealThumb}" alt="${recipe.strMeal}" class="meal-image" />
+            </div>
+            <div class="meal-info-container">
+               <button type="button" id="fav-btn" title="Add to your Favorites">⁠♡</button>
+               <h2 class="meal-title">${recipe.strMeal}</h2>
+               <h3>Ingredients</h3>
+               <ull class="ingredient-list">
+                  ${ingredientsHTML}
+               </ul>
+               <h3>Instructions</h3>
+               <ol class="instruction-steps">
+                  ${instructionsHTML}
+               </ol>
+               <h4>Source</h4>
+               <a href="${recipe.strSource === null || recipe.strSource === "" ? "" : recipe.strSource}" target="_blank" class="meal-source">${recipe.strSource === null || recipe.strSource === "" ? "Not Available" : recipe.strSource}</a>
+            </div>
          </div>
       `
    })
