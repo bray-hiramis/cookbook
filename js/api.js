@@ -12,3 +12,9 @@ export async function searchMeal(meal) {
       console.error("Error occured:", error);
    }
 }
+
+export async function searchMealById(mealId) {
+
+   
+   
+}

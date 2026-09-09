@@ -17,7 +17,7 @@ body {
   font-family: "Inter", sans-serif;
   background-color: #fffaf3;
   color: #333;
-  letter-spacing: 2.2px;
+  letter-spacing: 2px;
 }
 
 h1 {
@@ -86,6 +86,10 @@ img {
   transform: scale(1.03);
 }
 
+.filled {
+  color: #d22b2b;
+}
+
 .grid-container {
   display: grid;
   grid-template-areas: "nav" "main" "footer";
@@ -120,7 +124,7 @@ img {
 .grid-container #main .search-home #searchbox-content {
   background-color: #fefefe;
   padding: 15px;
-  border-radius: 12px;
+  border-radius: 9999px;
   width: 550px;
   min-width: 200px;
   display: grid;

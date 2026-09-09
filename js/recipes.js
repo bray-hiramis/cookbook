@@ -1,4 +1,5 @@
 import { searchMeal } from "./api.js";
+import { getFavorites, toggleFavorite, isMealFavorite } from "./storage.js";
 
 const urlParams = new URLSearchParams(window.location.search);
 const query = urlParams.get("search");
@@ -25,9 +26,8 @@ async function fetchRecipes() {
 function getIngredients(recipe) {
    let listRecipe = "";
    for (let i = 0; i <= 20; i++) {
-      /*
-         Bracket Notation recipe[strIngredient${i}]: Allows you to dynamically access object keys like strIngredient1, strIngredient2, etc., using a loop variable i.
-      */
+
+      // Bracket Notation recipe[strIngredient${i}]: Allows you to dynamically access object keys like strIngredient1, strIngredient2, etc., using a loop variable i.
       const measurement = recipe[`strMeasure${i}`];
       const ingredient = recipe[`strIngredient${i}`];
       const measurementAndIngredient = `${measurement} ${ingredient}`;
@@ -61,11 +61,12 @@ function displayMoreRecipes() {
 }
 
 function displayRecipes(recipes) {
-   // result.innerHTML = "";
    
    recipes.forEach((recipe) => {
       const ingredientsHTML = getIngredients(recipe);
       const instructionsHTML = formatInstructions(recipe.strInstructions);
+
+      const isFav = isMealFavorite(recipe.idMeal);
 
       result.innerHTML += `
          <div class="recipe-container" id="${recipe.idMeal}">
@@ -73,7 +74,9 @@ function displayRecipes(recipes) {
                <img loading="lazy" src="${recipe.strMealThumb}" alt="${recipe.strMeal}" class="meal-image" />
             </div>
             <div class="meal-info-container">
-               <button type="button" id="fav-btn" title="Add to your Favorites">⁠♡</button>
+               <button type="button" class="fav-btn ${isFav ? "filled" : ""}" data-id="${recipe.idMeal}" title="${isFav ? "Remove from your favorites" : "Add to your Favorites"}">
+                  ${isFav ? "&#10084;" : "&#9825;"}
+               </button>
                <h2 class="meal-title">${recipe.strMeal}</h2>
                <h3>Ingredients</h3>
                <ull class="ingredient-list">
@@ -88,7 +91,33 @@ function displayRecipes(recipes) {
             </div>
          </div>
       `
+   });
+
+   const favBtn = document.querySelectorAll(".fav-btn");
+
+   favBtn.forEach(fav => {
+      fav.addEventListener("click", function() {
+         const mealId = fav.getAttribute("data-id");
+
+         // Pushes the idMeal to the localStorage
+         toggleFavorite(mealId);
+
+         // Check if idMeal already exist in localStorage and send the result to the UI
+         const isNowFav = isMealFavorite(mealId);
+
+         // Updates the UI of the heart button
+         if (isNowFav) {
+            fav.classList.add("filled");
+            fav.innerHTML = "&#10084;";
+            fav.title = "Remove from your favorites";
+         } else {
+            fav.classList.remove("filled");
+            fav.innerHTML = "&#9825;";
+            fav.title = "Add to your Favorites";
+         }
+      })
    })
+
 }
 
 loadMoreBtn.addEventListener("click", displayMoreRecipes);

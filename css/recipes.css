@@ -86,6 +86,10 @@ img {
   transform: scale(1.03);
 }
 
+.filled {
+  color: #d22b2b;
+}
+
 .grid-container {
   display: grid;
   grid-template-areas: "header" "main";
@@ -147,7 +151,7 @@ img {
   position: relative;
   top: 0;
 }
-.grid-container #main #result .recipe-container .meal-info-container #fav-btn {
+.grid-container #main #result .recipe-container .meal-info-container .fav-btn {
   position: absolute;
   top: 0;
   right: 0;
