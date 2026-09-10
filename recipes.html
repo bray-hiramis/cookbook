@@ -19,7 +19,7 @@
                <div class="search-container">
                   <a href="index.html"><strong><span class="highlight">COOK</span>BOOK</strong></a>
                   <div class="form-container">
-                     <form action="recipes.html" method="GET" id="form">
+                     <form action="recipes.html" method="GET" id="form-container">
                         <a href="" class="search-icon" id="search-icon-btn"><i class="fa-solid fa-magnifying-glass"></i></a>
                         <input type="text" id="search-box" name="search" placeholder="e.g. Chicken Curry">
                      </form>
@@ -34,6 +34,15 @@
          <div class="container">
             <div class="padding-topbottom">
                <div class="result-main-container">
+                  <dialog id="dialog-error">
+                     <h2>Internal Server Error</h2>
+                     <p>We're sorry, but we are unable to connect to the server. Please try again.</p>
+                     <a href="" class="btn" id="try-again-btn">Try again</a>
+                     <button type="button" id="close-modal-btn">x</button>
+                  </dialog>
+                  <p>You searched for: <span id="search-value"></span></p>
+                  <br>
+                  <div class="loader"></div>
                   <div id="result">
                      <!-- Dynamically update the content -->
                   </div>

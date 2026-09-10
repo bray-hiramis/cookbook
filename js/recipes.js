@@ -1,5 +1,5 @@
 import { searchMeal } from "./api.js";
-import { getFavorites, toggleFavorite, isMealFavorite } from "./storage.js";
+import { toggleFavorite, isMealFavorite } from "./storage.js";
 
 const urlParams = new URLSearchParams(window.location.search);
 const query = urlParams.get("search");
@@ -7,19 +7,48 @@ let recipesArr = [];
 let startingIndex = 0;
 let endingIndex = 5;
 
+// ============================ DOM Elements ============================
 const result = document.getElementById("result");
 const loadMoreBtn = document.getElementById("load-more-btn");
+const formContainer = document.getElementById("form-container");
+const searchBox = document.getElementById("search-box");
+const searchValue = document.getElementById("search-value");
+const searchBtn = document.getElementById("search-icon-btn");
+const dialogError = document.getElementById("dialog-error");
+const tryAgainBtn = document.getElementById("try-again-btn");
+const closeModalBtn = document.getElementById("close-modal-btn");
+const loader = document.querySelector(".loader");
+// ============================ DOM Elements ============================
 
-async function fetchRecipes() {
-   if (query) {
-      try {
-         const data = await searchMeal(query);
-         recipesArr = data;
-         displayRecipes(recipesArr.slice(startingIndex, endingIndex));
-         return recipesArr;
-      } catch (error) {
-         console.log("An error occured:", error);
+async function fetchRecipes(meal) {
+   try {
+      const data = await searchMeal(meal);
+      if (data === null) { // If data is null, dynamically update the result container with error message
+         result.innerHTML = `<p>No recipes found for <em>${query}</em></p>`;
+         loadMoreBtn.style.display = "none";
+         return;
       }
+      recipesArr = data;
+      displayRecipes(recipesArr.slice(startingIndex, endingIndex));
+   } catch (error) {
+      console.log("An error occured:", error);
+      dialogError.showModal();
+   }
+}
+
+async function displaySearchRecipes() {
+   const newQuery = query.charAt(0).toUpperCase() + query.slice(1);
+   searchValue.textContent = newQuery;
+
+   // Shows the loading animation while awaiting for the API response
+   try {
+      loader.style.display = "block";
+      await fetchRecipes(query);
+   } catch (error) {
+      console.error("Fetch error:", error);
+      dialogError.showModal();
+   } finally {
+      loader.style.display = "none";
    }
 }
 
@@ -48,20 +77,7 @@ function formatInstructions(instructions) {
    return steps.map(step => `<li>${step}</li>`).join("");
 }
 
-function displayMoreRecipes() {
-   startingIndex += 5;
-   endingIndex += 5;
-
-   displayRecipes(recipesArr.slice(startingIndex, endingIndex));
-   if (recipesArr.length <= endingIndex) {
-      loadMoreBtn.disabled = true;
-      loadMoreBtn.style.cursor = "not-allowed";
-      loadMoreBtn.textContent = "No more data to load";
-   }
-}
-
 function displayRecipes(recipes) {
-   
    recipes.forEach((recipe) => {
       const ingredientsHTML = getIngredients(recipe);
       const instructionsHTML = formatInstructions(recipe.strInstructions);
@@ -92,36 +108,99 @@ function displayRecipes(recipes) {
          </div>
       `
    });
+}
 
-   const favBtn = document.querySelectorAll(".fav-btn");
+// To add 5 more additional results if available.
+function displayMoreRecipes() {
+   if (startingIndex + 5 >= recipesArr.length) {
+      loadMoreBtn.disabled = true;
+      loadMoreBtn.style.cursor = "not-allowed";
+      loadMoreBtn.textContent = "No more data to load";
+   }
 
-   favBtn.forEach(fav => {
-      fav.addEventListener("click", function() {
-         const mealId = fav.getAttribute("data-id");
+   startingIndex += 5;
+   endingIndex += 5;
+   displayRecipes(recipesArr.slice(startingIndex, endingIndex));
 
-         // Pushes the idMeal to the localStorage
-         toggleFavorite(mealId);
+   if (recipesArr.length <= endingIndex) {
+      loadMoreBtn.disabled = true;
+      loadMoreBtn.style.cursor = "not-allowed";
+      loadMoreBtn.textContent = "No more data to load";
+   }
+}
 
-         // Check if idMeal already exist in localStorage and send the result to the UI
-         const isNowFav = isMealFavorite(mealId);
+async function searchRecipes() {
+   result.innerHTML = "";
+   const searchQuery = searchBox.value.trim()
+   const newQuery = searchBox.value.trim().charAt(0).toUpperCase() + searchBox.value.trim().slice(1);
+   
+   // Reloads the same page when searching with a ""/null value in the searchbox
+   if (!searchQuery) {
+      displaySearchRecipes();
+      return;
+   }
+   
+   // Updates the URL search=value when searching directly in recipes.html
+   window.location.href = `recipes.html?search=${encodeURIComponent(searchQuery)}`;
 
-         // Updates the UI of the heart button
-         if (isNowFav) {
-            fav.classList.add("filled");
-            fav.innerHTML = "&#10084;";
-            fav.title = "Remove from your favorites";
-         } else {
-            fav.classList.remove("filled");
-            fav.innerHTML = "&#9825;";
-            fav.title = "Add to your Favorites";
-         }
-      })
-   })
+   try {
+      await fetchRecipes(searchQuery);
+      searchValue.textContent = newQuery;
+   } catch (error) {
+      console.error("Fetch error:", error);
+      dialogError.showModal();
+   }
 
 }
 
+// ============================ DOM Events ============================
+result.addEventListener("click", function(e) {
+   const favBtn = e.target.closest(".fav-btn"); // -> Event Delegation
+
+   if (!favBtn) return;
+
+   const mealId = favBtn.getAttribute("data-id");
+
+   // Pushes the idMeal to the localStorage
+   toggleFavorite(mealId);
+
+   // Check if idMeal already exist in localStorage and send the result to the UI
+   const isNowFav = isMealFavorite(mealId);
+
+   // Updates the UI of the heart button
+   if (isNowFav) {
+      favBtn.classList.add("filled");
+      favBtn.innerHTML = "&#10084;";
+      favBtn.title = "Remove from your favorites";
+   } else {
+      favBtn.classList.remove("filled");
+      favBtn.innerHTML = "&#9825;";
+      favBtn.title = "Add to your Favorites";
+   }
+})
+
 loadMoreBtn.addEventListener("click", displayMoreRecipes);
 
-// For testing purposes only to check the fetch output in console
-const testFetch = fetchRecipes()
-console.log(testFetch);
+formContainer.addEventListener("submit", function(e) {
+   e.preventDefault();
+   searchRecipes();
+})
+
+searchBtn.addEventListener("click", function(e) {
+   e.preventDefault();
+   searchRecipes();
+})
+
+tryAgainBtn.addEventListener("click", function() {
+   searchRecipes();
+   dialogError.close();
+})
+
+closeModalBtn.addEventListener("click", function() {
+   dialogError.close();
+})
+
+// ============================ DOM Events ============================
+
+// To display the result in the DOM.
+displaySearchRecipes();

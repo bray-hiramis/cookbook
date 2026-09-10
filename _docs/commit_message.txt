@@ -1,4 +1,7 @@
 Here are the updates I did:
 
-1. Added the saved to localStorage function in the recipes.js.
-2. Updated the UI of the search box in the homepage to be more google like search box.
+1. Added a UI indicator to show what the user searched (i.e. "You searched for: ${seachbox.value}").
+2. Fixed the bug when the search result shows only one, and when clicking on the "loadmorebtn" the "favbtn" stops working.
+3. Added an error state when server is unreachable using HTML's dialog element.
+4. Added an error state when the recipe is not available or not found in the API (i.e. result.innerHTML = `<p>No recipes found for <em>${query}</em></p>`;).
+5. Added a loading UI state while awaiting for the api to respond.

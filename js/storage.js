@@ -1,11 +1,10 @@
-export function getFavorites() {
+function getFavorites() {
    const favorites = localStorage.getItem("favoriteMeals");
    return favorites ? JSON.parse(favorites) : [];
 }
 
 export function toggleFavorite(mealId) {
    let favorites = getFavorites();
-
    if (favorites.includes(mealId)) {
       favorites = favorites.filter(id => id !== mealId);
    } else {

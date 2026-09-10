@@ -1,6 +1,8 @@
+// ============================ DOM Elements ============================
 const formContainer = document.getElementById("form-container");
 const searchIconBtn = document.getElementById("search-icon-btn");
 const searchBox = document.getElementById("search-box");
+// ============================ DOM Elements ============================
 
 function getSearchEntry() {
    const searchQuery = searchBox.value.trim();
