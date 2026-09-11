@@ -49,8 +49,35 @@
    #main {
       grid-area: main;
       min-height: 100vh;
+      position: relative;
       img {
          border-radius: var.$corner-l;
+      }
+      #dialog-error {
+         border: none;
+         padding: var.$space-l;
+         border-radius: var.$corner-l;
+         position: relative;
+         margin: auto auto;
+         text-align: center;
+         #try-again-btn {
+            margin: var.$space-s 0;
+         }
+         #close-modal-btn {
+            position: absolute;
+            top: 8px;
+            right: 15px;
+            font-size: 28px;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            &:hover {
+               color: #d22b2b;
+            }
+         }
+         &::backdrop {
+            background: rgba(0, 0, 0, 0.5);
+         }
       }
       #result {
          .recipe-container {
@@ -86,6 +113,16 @@
                   color: #0a75ad;
                }
             }
+         }
+      }
+      .up-btn-container {
+         position: fixed;
+         bottom: 10px;
+         right: 10px;
+         #up-btn {
+            font-size: 50px;
+            color: var.$main-color;
+            opacity: 0.9;
          }
       }
    }

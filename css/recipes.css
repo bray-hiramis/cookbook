@@ -91,33 +91,6 @@ img {
   color: #d22b2b;
 }
 
-#dialog-error {
-  border: none;
-  padding: 45px;
-  border-radius: 12px;
-  position: relative;
-  margin: auto auto;
-  text-align: center;
-}
-#dialog-error #try-again-btn {
-  margin: 15px 0;
-}
-#dialog-error #close-modal-btn {
-  position: absolute;
-  top: 8px;
-  right: 15px;
-  font-size: 28px;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-}
-#dialog-error #close-modal-btn:hover {
-  color: #d22b2b;
-}
-#dialog-error::backdrop {
-  background: rgba(0, 0, 0, 0.5);
-}
-
 .loader {
   border: 10px solid #f3f3f3; /* Light grey */
   border-top: 16px solid #3498db; /* Blue */
@@ -180,9 +153,36 @@ img {
 .grid-container #main {
   grid-area: main;
   min-height: 100vh;
+  position: relative;
 }
 .grid-container #main img {
   border-radius: 12px;
+}
+.grid-container #main #dialog-error {
+  border: none;
+  padding: 45px;
+  border-radius: 12px;
+  position: relative;
+  margin: auto auto;
+  text-align: center;
+}
+.grid-container #main #dialog-error #try-again-btn {
+  margin: 15px 0;
+}
+.grid-container #main #dialog-error #close-modal-btn {
+  position: absolute;
+  top: 8px;
+  right: 15px;
+  font-size: 28px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.grid-container #main #dialog-error #close-modal-btn:hover {
+  color: #d22b2b;
+}
+.grid-container #main #dialog-error::backdrop {
+  background: rgba(0, 0, 0, 0.5);
 }
 .grid-container #main #result .recipe-container {
   display: grid;
@@ -217,6 +217,16 @@ img {
 }
 .grid-container #main #result .recipe-container .meal-info-container .meal-source {
   color: #0a75ad;
+}
+.grid-container #main .up-btn-container {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+}
+.grid-container #main .up-btn-container #up-btn {
+  font-size: 50px;
+  color: #f62440;
+  opacity: 0.9;
 }
 
 /*# sourceMappingURL=recipes.css.map */

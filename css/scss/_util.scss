@@ -34,33 +34,6 @@
    color: #d22b2b;
 }
 
-#dialog-error {
-   border: none;
-   padding: var.$space-l;
-   border-radius: var.$corner-l;
-   position: relative;
-   margin: auto auto;
-   text-align: center;
-   #try-again-btn {
-      margin: var.$space-s 0;
-   }
-   #close-modal-btn {
-      position: absolute;
-      top: 8px;
-      right: 15px;
-      font-size: 28px;
-      border: none;
-      background-color: transparent;
-      cursor: pointer;
-      &:hover {
-         color: #d22b2b;
-      }
-   }
-   &::backdrop {
-      background: rgba(0, 0, 0, 0.5);
-   }
-}
-
 .loader {
   border: 10px solid #f3f3f3; /* Light grey */
   border-top: 16px solid #3498db; /* Blue */
