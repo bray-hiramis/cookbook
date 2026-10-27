@@ -8,6 +8,7 @@ export async function searchMeal(meal) {
       let response = await fetch(recipe);
       let data = await response.json();
       result = data.meals;
+      console.log(result);
       return result;
    } catch (error) {
       console.error("Error occured:", error);
@@ -16,6 +17,17 @@ export async function searchMeal(meal) {
 
 export async function searchMealById(mealId) {
 
-   
-   
+   let result = [];
+
+   try {
+      const recipe = mealById + mealId;
+      let response = await fetch(recipe);
+      let data = await response.json();
+      result = data.meals;
+      console.log(result);
+      return result;
+   } catch (error) {
+      console.log("Error occured:", error);
+   }
+
 }

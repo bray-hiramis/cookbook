@@ -1,0 +1,87 @@
+@use 'var';
+@use 'global';
+@use 'util';
+
+.grid-container-favorites {
+   display: grid;
+   grid-template-areas: 
+      'navigation'
+      'main-body'
+      'footer'
+   ;
+   .span-category {
+      font-size: 14px;
+   }
+   #nav {
+      grid-area: navigation;
+      .nav-container {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         flex-wrap: wrap;
+         .nav-btn {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var.$space-m;
+            .nav-link a {
+               padding: var.$space-s;
+               border-bottom: 2px solid transparent;
+               &:hover {
+                  color: var.$main-color;
+                  border-bottom: 2px solid var.$main-color;
+               }
+            }
+         }
+      }
+   }
+   #main {
+      grid-area: main-body;
+      min-height: 100vh;
+      #category-filter {
+         border-radius: 999px;
+         margin: var.$space-s 0;
+         padding: 10px;
+         font-size: 14px;
+         background-color: var.$bg-color;
+      }
+      #recipes-container {
+         display: grid;
+         grid-template-columns: repeat(3, 1fr);
+         gap: 10px;
+         .recipe-box {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid #333;
+            text-align: center;
+            height: 100%;
+            border-radius: var.$corner-m;
+            .meal-name {
+               font-size: 14px;
+               margin: 10px 0;
+            }
+            .view-details {
+               cursor: pointer;
+               width: 100%;
+               border: none;
+               margin-top: auto;
+               padding: 10px 0;
+               background-color: var.$accent-color;
+               color: var.$text-color;
+            }
+         }
+      }
+   }
+   #footer {
+      grid-area: footer;
+      text-align: center;
+      p {
+         font-size: 12px;
+      }
+      .socials {
+         a {
+            display: inline-block;
+         }
+      }
+   }
+}

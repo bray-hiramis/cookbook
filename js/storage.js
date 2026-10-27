@@ -1,4 +1,4 @@
-function getFavorites() {
+export function getFavorites() {
    const favorites = localStorage.getItem("favoriteMeals");
    return favorites ? JSON.parse(favorites) : [];
 }
