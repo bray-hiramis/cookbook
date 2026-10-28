@@ -154,7 +154,7 @@ async function searchRecipes() {
 }
 
 // ============================ DOM Events ============================
-result.addEventListener("click", function(e) {
+result.addEventListener("click", function(e) { // Add or Remove favorite meal
    const favBtn = e.target.closest(".fav-btn"); // -> Event Delegation
 
    if (!favBtn) return;

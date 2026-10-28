@@ -1,7 +1,7 @@
 const mealDBAPI = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
 const mealById = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=";
 
-export async function searchMeal(meal) {
+export async function searchMeal(meal) { // Search via keyword
    let result = [];
    try {
       const recipe = mealDBAPI + meal;
@@ -15,10 +15,8 @@ export async function searchMeal(meal) {
    }
 }
 
-export async function searchMealById(mealId) {
-
+export async function searchMealById(mealId) { // Search via meal ID
    let result = [];
-
    try {
       const recipe = mealById + mealId;
       let response = await fetch(recipe);
@@ -29,5 +27,4 @@ export async function searchMealById(mealId) {
    } catch (error) {
       console.log("Error occured:", error);
    }
-
 }

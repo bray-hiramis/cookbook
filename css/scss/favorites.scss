@@ -56,6 +56,26 @@
             text-align: center;
             height: 100%;
             border-radius: var.$corner-m;
+            position: relative;
+            top: 0;
+            .delete-fav {
+               width: 50px;
+               height: 50px;
+               font-size: 22px;
+               position: absolute;
+               top: 0;
+               right: 0;
+               background-color: transparent;
+               border: none;
+               color: var.$main-color;
+               cursor: pointer;
+               &:hover {
+                  transform: scale(1.15);
+               }
+               &:active {
+                  transform: scale(1);
+               }
+            }
             .meal-name {
                font-size: 14px;
                margin: 10px 0;
