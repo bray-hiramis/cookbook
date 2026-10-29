@@ -95,7 +95,7 @@ function displayRecipes(recipes) {
                </button>
                <h2 class="meal-title">${recipe.strMeal}</h2>
                <h3>Ingredients</h3>
-               <ull class="ingredient-list">
+               <ul class="ingredient-list">
                   ${ingredientsHTML}
                </ul>
                <h3>Instructions</h3>
