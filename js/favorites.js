@@ -174,11 +174,20 @@ recipeContainer.addEventListener("click", function(e) {
    lightBoxContainer.style.display = "flex";
 })
 
-lightbox.addEventListener("click", function(e) {
+lightBoxContainer.addEventListener("click", function(e) { // closing lightbox viewer
    const closeLightBox = e.target.closest(".close-lightbox");
-   if (e.target === closeLightBox) {
+   if (e.target === lightBoxContainer || closeLightBox) {
       lightbox.innerHTML = "";
       lightBoxContainer.style.display = "none";
+      return;
+   }
+})
+
+document.addEventListener("keydown", function(e) { // closing lightbox viewer
+   if (e.key === "Escape") {
+      lightbox.innerHTML = "";
+      lightBoxContainer.style.display = "none";
+      return;
    }
 })
 

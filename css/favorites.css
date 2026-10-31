@@ -131,10 +131,13 @@ img {
   align-items: center;
   flex-wrap: wrap;
 }
+.grid-container-favorites #nav .nav-container #logo {
+  font-weight: 800;
+}
 .grid-container-favorites #nav .nav-container .nav-btn {
   display: flex;
   flex-wrap: wrap;
-  gap: 35px;
+  gap: 10px;
 }
 .grid-container-favorites #nav .nav-container .nav-btn .nav-link a {
   padding: 15px;
